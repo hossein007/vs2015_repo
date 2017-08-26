@@ -1,0 +1,41 @@
+﻿@model DevelopersHub.ViewModels.MemberDetailViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div class="row">
+@*  *@
+    <div class="col-md-12">
+        <div class="row">
+
+            <div class="col-md-4 col-xs-12">
+                <img src="@Model.Member.Picture" class="img-rounded pull-left" />
+            </div>
+
+
+
+            <div class="col-md-8 col-xs-12">
+                <h1>@Model.Member.Fname, @Model.Member.Sname</h1>
+                <h2>
+                    @Model.Member.City, @Model.Member.Country
+                </h2>
+                <h3>
+                    @Model.Member.Bdate
+                </h3>
+                <p>
+                    @Model.Member.Experience
+                </p>
+                
+                <a asp-controller="Members" asp-action="Index" class="btn btn-large btn-primary">Members</a>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+ 
+</div>

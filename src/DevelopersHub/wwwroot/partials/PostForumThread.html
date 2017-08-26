@@ -1,0 +1,75 @@
+﻿
+
+    <div class="container-fluid" ng-controller="PostForumThread" ng-init="init()">
+        <h1>
+            {{forum.name}}
+        </h1>
+        <h2>
+            <span ng-switch on="mode">
+                <span ng-switch-when="edit">
+                    Edit forum thread
+                </span>
+                <span ng-switch-when="create">
+                    Reply to forum thread
+                </span>
+            </span>
+        </h2>
+        
+        <h3>
+            <span>  by {{member.sname}}</span>
+        </h3>
+            <div ng-switch on="mode">
+                <div ng-switch-when="edit">
+                    save:
+                    {{forumThread.Text}}
+                    <!-- code to render a large video block-->
+                </div>
+                <div ng-switch-when="create">
+                    reply to:
+                    {{to_forumThread.Text}}
+                    <!-- code to render a large video block-->
+                </div>
+                <div ng-switch-default>
+                    
+                    <!-- code to render the regular video block -->
+                </div>
+            </div>
+        
+         
+        <form ng-submit="handleSubmit()">
+            <div class="row">
+                <div class="form-group col-xs-4">
+                    <label for="Text">Text</label>
+                    <input ng-model="forumThread.Text" name="Text" type="text" class="form-control input-lg" />
+                </div>
+            </div>
+
+            <div class="row">
+                <button type="submit" class="btn btn-primary btn-lg">Save</button>
+                <a href="/Forums/ViewForum/{{forumId}}#ar_{{Id}}" class="btn btn-default btn-lg">Cancel</a>
+                <a href="/Forums/ViewForum/{{forumId}}" class="btn btn-default btn-lg">Return to Forum({{forum.name}})</a>
+            </div>
+
+        </form>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="alert alert-success hide">
+                    <!--<a href="#" class="close" data-dismiss="alert">&times;</a>-->
+                    {{actionmessage}}
+                </div>
+            </div>
+        </div>
+        <div style="color:red;">
+            <input id="Id" type="hidden" ng-model="Id" value="{{Id}}" />
+            <input id="memberId" type="hidden" ng-model="memberId" value="{{memberId}}" />
+            <input id="forumId" type="hidden" ng-model="forumId" value="{{forumId}}" />
+            <input id="forumThreadId" type="hidden" ng-model="forumThreadId" value="{{forumThreadId}}" />
+            <input id="toForumThreadId" ng-model="toForumThreadId" value="{{toForumThreadId}}" type="hidden" />
+            <!--proposals}}-->
+          
+        </div>
+
+    </div>
+
+
+

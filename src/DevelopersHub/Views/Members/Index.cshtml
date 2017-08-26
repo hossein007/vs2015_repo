@@ -1,0 +1,47 @@
+﻿@model DevelopersHub.ViewModels.MembersViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div class="row">
+@*  *@
+    <div class="col-md-12">
+        <ul class="list-unstyled thumbnails clearfix">
+            @foreach (var item in Model.Members)
+            {
+                <li class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="@Html.ValueOrDefault("/images/defaults/member.jpg", item.Picture)" data-src="@Html.ValueOrDefault("/images/defaults/member.jpg", item.Picture)" width="300" height="200" alt="300x200" style="">
+                        <div class="caption">
+                            <h3>
+                            @item.Fname
+                            @item.Sname
+                            </h3>
+                            <p>
+                               Birth date: @item.Bdate
+                            </p>
+                            <p>
+                                @item.Experience
+                            </p>
+                           
+                            <p>
+                                <a asp-controller="Members" asp-action="MemberDetail" asp-route-Id="@item.Id" class="btn btn-primary">
+                                    Detail
+
+                                </a>
+                                <a asp-controller="Proposals" asp-action="MemberProposals" asp-route-Id="@item.Id" class="btn btn-primary">
+                                    Proposals
+
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+        @Html.PageBar(Model.HttpContextAccessor, "Members?Page=", Model.PageNumber, Model.PageCount, "pagination")
+    </div>
+ 
+</div>

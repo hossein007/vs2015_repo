@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Create Proposal";
+}
+<h1>@ViewData["Title"].</h1>
+@section headerscripts
+{
+    <script type="text/javascript">
+
+        $(document).ready(function()
+        {
+
+            var memberId = @ViewData["memberId"];
+            var ang_element = angular.element($('#memberId'))[0];
+
+            alert(ang_element);
+            $(ang_element).val(memberId);
+            alert($(ang_element).val());
+        });
+        
+
+    </script>
+    
+}
+<div ng-app="developersHubApp">
+    <div ng-view></div>
+</div>    
+
