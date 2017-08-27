@@ -1,0 +1,16 @@
+﻿@model DevelopersHub.ViewModels.ProposalsViewModel
+@{
+    ViewData["Title"] = "Proposals";
+}
+<h1>@ViewData["Title"].</h1>
+<ul>
+    @foreach (var item in Model.Proposals)
+    {
+        <li>
+            <a asp-controller="Proposals" asp-action="ViewProposal" asp-route-Id="@item.Id">
+                @item.Title
+            </a>
+            
+        </li>
+    }
+</ul>

@@ -1,0 +1,45 @@
+﻿<h1>Add a new proposal</h1>
+<div class="container-fluid" ng-controller="CreateProposal" ng-init="init(1)">
+    <form ng-submit="newProposal()">
+        <div class="row">
+            <div class="form-group col-xs-4">
+                <label for="Title">Title</label>
+                <input ng-model="new_proposal.Title" name="Title" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4 col-xs-8">
+                <label for="Description">Description</label>
+                <input ng-model="new_proposal.Describtion" name="Describtion" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4 col-xs-8">
+                <label for="Description">Technologies</label>
+                <input ng-model="new_proposal.Technologies" name="Technologies" type="text" class="form-control" />
+            </div>
+        </div>
+        
+        <div class="row">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="/" class="btn btn-default">Cancel</a>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="alert alert-success hide">
+                <!--<a href="#" class="close" data-dismiss="alert">&times;</a>-->
+                {{actionmessage}}
+            </div>
+        </div>
+    </div>
+    <div style="color:red;">
+        <input id="memberId" type="hidden" ng-model="memberId" value="{{memberId}}" />
+        {{proposals}}
+        ssssssss oooooooo
+    </div>
+
+</div> 
+
+
+

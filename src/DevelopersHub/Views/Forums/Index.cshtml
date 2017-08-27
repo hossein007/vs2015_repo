@@ -1,0 +1,16 @@
+﻿@model DevelopersHub.ViewModels.ForumsViewModel
+@{
+    ViewData["Title"] = "Forums";
+}
+<h1>@ViewData["Title"].</h1>
+<ul>
+    @foreach (var item in Model.Forums)
+    {
+        <li>
+            <a asp-controller="Forums" asp-action="ViewForum" asp-route-Id="@item.Id">
+                @item.Name
+            </a>
+            
+        </li>
+    }
+</ul>

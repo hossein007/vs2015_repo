@@ -1,0 +1,32 @@
+﻿@model DevelopersHub.ViewModels.MemberProposalsViewModel
+@{
+    ViewData["Title"] = "Proposals";
+}
+<h1>@ViewData["Title"].</h1>
+<h2>
+    By:
+    @Model.Member.Fname,
+    @Model.Member.Sname
+</h2>
+
+@if (Model.Proposals.Count > 0)
+{
+<ul>
+    @foreach (var item in Model.Proposals)
+    {
+        <li>
+            <a asp-controller="Proposals" asp-action="ViewProposal" asp-route-Id="@item.Id">
+                @item.Title
+            </a>
+            
+        </li>
+    }
+</ul>
+}
+else
+{
+    <p>
+        @("No Proposals")
+    </p>
+}
+@Html.PageBar(Model.HttpContextAccessor, string.Format("Proposals/MemberProposals?Id={0}&Page=", Model.Member.Id), Model.PageNumber, Model.PageCount)

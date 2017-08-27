@@ -1,0 +1,27 @@
+﻿@model DevelopersHub.ViewModels.MembersViewModel
+@{
+    ViewData["Title"] = "Members";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+
+
+<div class="row">
+@*  *@
+@foreach (DevelopersHub.Models.TblMembers item in Model.Members)
+{
+        <div class="col-md-3">
+            <span>
+                @item.Fname
+                @item.Sname
+            </span>
+            <span>
+                @item.Bdate
+            </span>
+            <span>
+                @item.Experience
+            </span>
+        </div>
+    }
+            
+</div>

@@ -1,0 +1,19 @@
+﻿@model DevelopersHub.ViewModels.ViewForumViewModel
+@{
+    ViewData["Title"] = "Forums";
+}
+<h1>@Model.Forum.Name</h1>
+
+
+
+<h2>
+    By:
+    @Model.Forum.M.Fname,
+    @Model.Forum.M.Sname
+</h2>
+
+<p>
+    <a asp-controller="Forums" asp-action="Index" class="btn btn-large btn-primary">
+        Forums
+    </a>
+</p>

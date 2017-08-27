@@ -1,0 +1,25 @@
+﻿@model DevelopersHub.ViewModels.ViewProposalViewModel
+@{
+    ViewData["Title"] = "Proposals";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+
+By:
+@Model.Proposal.M.Fname,
+@Model.Proposal.M.Sname
+
+<p>
+    @Model.Proposal.Describtion
+</p>
+<p>
+    @Model.Proposal.Technologies
+</p>
+<img src="@Model.Proposal.SnapshotFile" />
+
+
+
+            <a asp-controller="Proposals" asp-action="Index" class="btn btn-large btn-primary">
+               Proposals
+            </a>

@@ -1,0 +1,143 @@
+﻿@model DevelopersHub.ViewModels.IndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <div class="jumbotron">
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Developers Hub: where developers can communicate and share
+                        <a asp-controller="Members" asp-action="Index" class="btn btn-default">
+                            Learn More
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="jumbotron">
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Find developers
+                        <a asp-controller="Members" asp-action="Index" class="btn btn-default">
+                            Learn More
+                        </a>
+                    </p>
+                </div>
+                </div>
+            </div>
+        <div class="item">
+            <div class="jumbotron">
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Share and explore developers project proposals
+                        <a class="btn btn-default" asp-controller="Forums" asp-action="Index">
+                            Learn More
+                        </a>
+                    </p>
+                </div>
+                </div>
+            </div>
+        <div class="item">
+            <div class="jumbotron">
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Discuss in forums
+                        <a class="btn btn-default">
+                            Learn More
+                        </a>
+                    </p>
+                </div>
+                </div>
+            </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Big Picture</h2>
+       
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-unstyled thumbnails clearfix">
+            @foreach (var item in Model.Proposals)
+            {
+                <li class="col-md-3">
+                    <div class="thumbnail">
+                        <a class="caption" asp-controller="Proposals" asp-action="ViewProposal" asp-route-Id="@item.Id">
+                            @item.Title
+                        </a>
+                        <p>
+                            By: @item.M.Fname, @item.M.Sname
+                        </p>
+                        <p>
+                            @item.Technologies
+                        </p>
+                    </div>
+</li>
+            }
+        </ul>
+    </div>
+</div>
+
+
+    <div class="row">
+        @*  *@
+        <div class="col-md-12">
+            <ul class="list-unstyled thumbnails clearfix">
+                @foreach (var item in Model.Members)
+            {
+                    <li class="col-md-3">
+                        <div class="thumbnail">
+                            <img src="@Html.ValueOrDefault("/images/defaults/member.jpg", item.Picture)" data-src="@Html.ValueOrDefault("/images/defaults/member.jpg", item.Picture)" width="300" height="200" alt="300x200" style="">
+                            <div class="caption">
+                                <h3>
+                                    @item.Fname
+                                    @item.Sname
+                                </h3>
+                                <p>
+                                    Birth date: @item.Bdate
+                                </p>
+                                <p>
+                                    @item.Experience
+                                </p>
+
+                                <p>
+                                    <a asp-controller="Members" asp-action="MemberDetail" asp-route-Id="@item.Id" class="btn btn-primary">
+                                        Detail
+
+                                    </a>
+                                    <a asp-controller="Proposals" asp-action="MemberProposals" asp-route-Id="@item.Id" class="btn btn-primary">
+                                        Proposals
+
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+
+    </div>
